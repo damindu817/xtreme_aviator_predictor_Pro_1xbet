@@ -85,6 +85,11 @@
       font-size: 1.2rem;
     }
 
+    .upcoming-glow-label {
+      color: #ffffff !important;
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+    }
+
     .glow {
       box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 45px #00ff00;
       animation: pulse-green 1.5s infinite;
@@ -151,7 +156,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-top: 35px; /* Slightly increased from 20px */
+      margin-top: 35px;
     }
 
     .btn-group a button {
@@ -208,6 +213,8 @@
 
   <div class="circle" id="signal">
     <div class="time-label" id="timeLabel"><span id="loadingText">Loading...</span></div>
+    <div id="endCountdown" style="margin-top: 6px; font-size: 1.1rem; color: #00ff00;">End in: --:--</div>
+    <div id="nextCountdown" style="margin-top: 4px; font-size: 1.1rem; color: #ffaa00;">Upcoming in: --:--</div>
   </div>
 
   <div class="arrows">&gt;&gt;&gt;</div>
@@ -217,10 +224,10 @@
       <span id="offerText" class="fade-text show">CASH OUT : 5× | 6× | 7×</span>
     </div>
     <div class="btn-group">
-      <a href="https://chat.whatsapp.com/BE39Aj6enbP3SNkfmn8DeG" target="_blank" class="whatsapp">
+      <a href="https://wa.me/94765432456" target="_blank" class="whatsapp">
         <button>WhatsApp</button>
       </a>
-      <a href="https://t.me/+Ems_0HKtv_gwZmQ1" target="_blank" class="telegram">
+      <a href="https://t.me/yourchannel" target="_blank" class="telegram">
         <button>Telegram</button>
       </a>
     </div>
@@ -228,7 +235,6 @@
 
   <div class="footer">POWERED BY XTREME PREDICTOR</div>
 
-  <!-- Beep Sound -->
   <audio id="beep-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
 
   <script>
@@ -239,9 +245,11 @@
     const signal = document.getElementById("signal");
     const clock = document.getElementById("clock");
     const dateEl = document.getElementById("date");
-    const timeLabel = document.getElementById("loadingText");
+    const timeLabel = document.getElementById("timeLabel");
     const offerText = document.getElementById("offerText");
     const beep = document.getElementById("beep-sound");
+    const endCountdown = document.getElementById("endCountdown");
+    const nextCountdown = document.getElementById("nextCountdown");
     let lastDisplayedText = "";
     let lastBeepLabel = "";
 
@@ -318,6 +326,7 @@
         }
       }
 
+      timeLabel.classList.remove("upcoming-glow-label");
       signal.classList.remove("glow", "inactive-glow");
 
       if (active) {
@@ -325,13 +334,18 @@
         timeLabel.classList.remove("loading");
         signal.classList.add("glow");
 
+        const remainingMs = active.to - now;
+        const mins = Math.floor(remainingMs / 60000);
+        const secs = Math.floor((remainingMs % 60000) / 1000);
+        endCountdown.textContent = `End in: ${pad(mins)}:${pad(secs)}`;
+        nextCountdown.textContent = "";
+
         if (active.label !== lastBeepLabel) {
           playBeep();
           lastBeepLabel = active.label;
         }
 
-        const label = active.label;
-        const minutesInLabel = label.match(/\d{2}:(\d{2})/g)?.map(t => t.split(':')[1]);
+        const minutesInLabel = active.label.match(/\d{2}:(\d{2})/g)?.map(t => t.split(':')[1]);
 
         if (minutesInLabel && minutesInLabel.some(m => ["06", "36", "46"].includes(m))) {
           animateTextChange("CASH OUT : 3×");
@@ -340,6 +354,22 @@
         }
 
       } else {
+        endCountdown.textContent = "";
+
+        if (next) {
+          const remainingMs = next.from - now;
+          const mins = Math.floor(remainingMs / 60000);
+          const secs = Math.floor((remainingMs % 60000) / 1000);
+          nextCountdown.innerHTML = `<span style="color:white;">Upcoming</span> in: ${pad(mins)}:${pad(secs)}`;
+
+          const upcomingGap = next.from - now;
+          if (upcomingGap > 8000) {
+            timeLabel.classList.add("upcoming-glow-label");
+          }
+        } else {
+          nextCountdown.innerHTML = `<span style="color:white;">Upcoming</span> in: --:--`;
+        }
+
         const pastRanges = allRanges.filter(r => r.to <= now);
         const lastEnd = pastRanges.length ? pastRanges[pastRanges.length - 1].to : null;
 
@@ -353,8 +383,7 @@
           timeLabel.textContent = next ? next.label : "--:--";
           signal.classList.add("inactive-glow");
 
-          const nextLabel = next?.label;
-          const nextMinutes = nextLabel?.match(/\d{2}:(\d{2})/g)?.map(t => t.split(':')[1]);
+          const nextMinutes = next?.label?.match(/\d{2}:(\d{2})/g)?.map(t => t.split(':')[1]);
 
           if (nextMinutes && nextMinutes.some(m => ["06", "36", "46"].includes(m))) {
             animateTextChange("CASH OUT : 3×");
