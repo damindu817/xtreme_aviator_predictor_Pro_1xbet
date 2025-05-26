@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>XTREME PREDICTOR PRO</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -17,6 +17,12 @@
       min-height: 100vh;
       margin: 0;
       padding-top: 20px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     /* Header Box with Improved Shine Effect */
@@ -306,12 +312,10 @@
 
     .btn-group a.whatsapp button {
       background-color: #25D366;
-      box-shadow: 0 0 15px #25D366;
     }
 
     .btn-group a.telegram button {
       background-color: #0088cc;
-      box-shadow: 0 0 15px #0088cc;
     }
 
     .footer {
@@ -454,6 +458,23 @@
   <audio id="beep-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
 
   <script>
+    // Block context menu to prevent copy/paste
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    
+    // Block keyboard shortcuts for copy/paste
+    document.addEventListener('keydown', function(e) {
+      // Block Ctrl+C, Ctrl+X, Ctrl+V
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
+        e.preventDefault();
+      }
+      // Block right click
+      if (e.keyCode === 93) {
+        e.preventDefault();
+      }
+    });
+
     const patternMinutes = [
       [2, 3], [6, 6], [8, 9], [14, 15], [20, 22],
       [28, 30], [36, 36], [38, 39], [41, 43], [46, 46], [55, 57]
