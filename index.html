@@ -239,7 +239,7 @@
       font-size: 1.3rem;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       overflow: hidden;
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
@@ -275,16 +275,24 @@
       opacity: 1;
     }
 
-    /* Buttons */
+    /* Buttons - Updated to stack vertically */
     .btn-group {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 20px;
-      margin-top: 25px;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .btn-group a {
+      width: 100%;
+      text-decoration: none;
     }
 
     .btn-group a button {
-      padding: 10px 25px;
+      padding: 12px 0;
       font-size: 1rem;
       font-weight: 500;
       border-radius: 8px;
@@ -293,6 +301,7 @@
       transition: 0.3s ease;
       color: white;
       font-family: 'Roboto', sans-serif;
+      width: 100%;
     }
 
     .btn-group a.whatsapp button {
