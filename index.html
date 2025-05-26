@@ -19,7 +19,7 @@
       padding-top: 20px;
     }
 
-    /* Header Box with Shine Effect */
+    /* Header Box with Improved Shine Effect */
     .header {
       text-align: center;
       margin: 20px 0 10px 0;
@@ -51,17 +51,22 @@
     .main-title::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -60%;
+      top: 0;
+      left: -100%;
       width: 50%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(30deg);
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
       animation: shine 3s infinite;
     }
 
     @keyframes shine {
-      0% { left: -60%; }
+      0% { left: -100%; }
       20% { left: 100%; }
       100% { left: 100%; }
     }
@@ -213,7 +218,7 @@
       color: white !important;
     }
 
-    /* Cash Out Box with Enhanced Shine Effect */
+    /* Cash Out Box with Improved Shine Effect */
     .offer-section {
       margin-top: 20px;
       text-align: center;
@@ -244,12 +249,17 @@
     .offer-box::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -60%;
+      top: 0;
+      left: -100%;
       width: 50%;
-      height: 200%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(30deg);
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
       animation: shine 3s infinite;
       animation-delay: 1s;
     }
@@ -329,9 +339,10 @@
       left: 0;
     }
 
+    /* Modified gradient without white color */
     .predicting-text div {
       font-weight: bold;
-      background: linear-gradient(to right, #ff00cc, #9900ff, #ffffff, #00ccff);
+      background: linear-gradient(to right, #ff00cc, #9900ff, #00ccff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -511,7 +522,7 @@
       predictingText.style.display = "flex";
       countdownContainer.classList.add("hidden");
       signal.classList.add("inactive-glow");
-      animateTextChange("Calculating optimal odds...");
+      animateTextChange("WAITING FOR SIGNAL...");
     }
 
     function showCountdown() {
