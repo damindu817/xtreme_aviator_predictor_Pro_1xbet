@@ -502,7 +502,7 @@
     <div class="predicting-state" id="predictingState">
       <div class="predicting-title">PREDICTING</div>
       <div class="predicting-title">NEXT SIGNAL</div>
-      <div class="analyzing-text">Processing patterns<span class="dots"></span></div>
+      <div class="analyzing-text">Analyzing patterns<span class="dots"></span></div>
     </div>
     <div class="countdown-state" id="countdownState">
       <div class="signal-time" id="signalTime">--:--</div>
@@ -512,7 +512,7 @@
   </div>
 
   <div class="recommendation-box">
-    <div class="recommendation-value" id="recommendationValue">Analyzing patterns...</div>
+    <div class="recommendation-value" id="recommendationValue">Calculating optimal odds...</div>
   </div>
 
   <div class="action-buttons">
@@ -620,7 +620,7 @@
       countdownState.classList.remove("visible");
       signal.classList.remove("active");
       signal.classList.add("inactive");
-      animateTextChange("Analyzing patterns...");
+      animateTextChange("Calculating optimal odds...");
     }
 
     function showCountdown() {
