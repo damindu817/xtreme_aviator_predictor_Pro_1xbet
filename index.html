@@ -7,15 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1a0a2e; /* Deep purple */
-      --secondary-color: #3d0b5c; /* Dark purple */
-      --accent-color: #ff0055; /* Vibrant pink-red */
-      --success-color: #00e1ff; /* Bright cyan-blue */
+      --primary-color: #1a0a2e;
+      --secondary-color: #3d0b5c;
+      --accent-color: #ff0055;
+      --success-color: #00e1ff;
       --text-color: #ffffff;
-      --border-color: #6a3093; /* Purple */
-      --highlight-color: #ff00aa; /* Pink */
-      --blue-accent: #0066ff; /* Bright blue */
-      --min-tap-target: 48px; /* Minimum touch target size */
+      --border-color: #6a3093;
+      --highlight-color: #ff00aa;
+      --blue-accent: #0066ff;
+      --min-tap-target: 48px;
     }
     
     * {
@@ -43,7 +43,6 @@
       touch-action: manipulation;
     }
 
-    /* Header - Mobile Optimized */
     .header {
       text-align: center;
       margin-bottom: 15px;
@@ -102,7 +101,6 @@
       text-shadow: 0 0 8px rgba(255, 0, 170, 0.5);
     }
 
-    /* Status Bar - Mobile Optimized */
     .status-bar {
       display: flex;
       justify-content: space-between;
@@ -138,7 +136,6 @@
       flex-shrink: 0;
     }
 
-    /* Enhanced Live Indicator with adjusted icon position */
     .live-indicator {
       display: flex;
       align-items: center;
@@ -154,12 +151,12 @@
       height: 12px;
       background-color: var(--accent-color);
       border-radius: 50%;
-      margin-right: 8px; /* Increased margin to push text further right */
+      margin-right: 8px;
       box-shadow: 0 0 10px var(--accent-color);
       animation: pulse 1.5s infinite;
       flex-shrink: 0;
       position: relative;
-      left: -2px; /* Move icon slightly forward (to the left) */
+      left: -2px;
     }
 
     @keyframes pulse {
@@ -168,7 +165,6 @@
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
     }
 
-    /* Signal Display - Mobile Optimized */
     .signal-display {
       width: 85vw;
       height: 85vw;
@@ -300,7 +296,6 @@
       text-shadow: 0 0 5px var(--highlight-color);
     }
 
-    /* Recommendation Box - Mobile Optimized */
     .recommendation-box {
       width: 95%;
       max-width: 400px;
@@ -356,7 +351,7 @@
       opacity: 0;
     }
 
-    /* Action Buttons - Mobile Optimized */
+    /* Updated Button Styles with New Gradient Colors */
     .action-buttons {
       display: flex;
       flex-direction: column;
@@ -384,6 +379,7 @@
       position: relative;
       overflow: hidden;
       min-height: var(--min-tap-target);
+      font-family: 'Montserrat', sans-serif;
     }
 
     .action-button::before {
@@ -419,15 +415,6 @@
       transform: translateY(2px);
     }
 
-    .button-icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
-      flex-shrink: 0;
-    }
-
-    /* Footer - Mobile Optimized */
     .footer {
       margin-top: 20px;
       font-size: clamp(0.7rem, 3vw, 0.8rem);
@@ -437,12 +424,10 @@
       line-height: 1.4;
     }
 
-    /* Utility Classes */
     .hidden {
       display: none !important;
     }
 
-    /* Mobile-specific optimizations */
     @media (max-width: 480px) {
       .status-bar {
         justify-content: center;
@@ -462,7 +447,6 @@
         padding: 12px 0;
       }
       
-      /* Further adjustments for very small screens */
       @media (max-width: 350px) {
         .status-bar {
           flex-direction: column;
@@ -529,36 +513,26 @@
 
   <div class="action-buttons">
     <a href="https://wa.me/94765432456" target="_blank" class="action-button whatsapp">
-      <svg class="#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-6.29-3.03c.545 1.422 1.666 2.595 1.98 2.827.314.227.85.486 1.316.629.464.144.882.129 1.21.08.326-.05.94-.277 1.316-1.023.375-.746.375-1.39.267-1.523-.107-.133-.464-.198-1.003-.347-.538-.148-1.423-.074-1.64.075-.218.148-.84.744-1.015.893-.175.149-.347.223-.644.074-.297-.149-1.253-.462-2.39-1.475-.883-.787-1.48-1.76-1.652-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.148-.174.248-.298.347-.496.099-.199.05-.373-.025-.521-.075-.148-.669-1.611-.915-2.206-.24-.579-.487-.5-.669-.511-.173-.008-.371-.01-.569-.01-.199 0-.52.074-.793.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.198 5.077 4.486.063.027.124.052.184.075-.117-.38-.255-.827-.369-1.25M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10c-1.97 0-3.83-.6-5.35-1.63l-3.48.9.94-3.25A9.96 9.96 0 0 1 2 12 10 10 0 0 1 12 2m0-2a12 12 0 0 0-12 12c0 2.17.69 4.19 1.86 5.84L0 24l4.31-1.13A12 12 0 0 0 12 24a12 12 0 0 0 12-12A12 12 0 0 0 12 0z"/>
-      </svg>
       JOIN WHATSAPP GROUP
     </a>
     <a href="https://t.me/yourchannel" target="_blank" class="action-button telegram">
-      <svg class="#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.1.06-.2-.06-.3s-.35-.04-.5-.04c-.21 0-.57.08-1.78 1.33-1.38 1.39-1.72 1.51-3.12 1.25-.5-.09-.96-.28-1.37-.5-1.28-.67-2.3-1.13-2.2-2.41.03-.38.32-.76.9-1.08 3.5-1.57 5.83-2.63 8.78-3.94 1.13-.5 2.16-.38 2.48.32.3.63.18 2.01-.12 3.55z"/>
-      </svg>
       JOIN TELEGRAM CHANNEL
     </a>
   </div>
 
-  <div class="footer">© 2025 AVIATOR PREDICTOR PRO | All Rights Reserved</div>
+  <div class="footer">POWERED BY XTREME PREDICTOR</div>
 
   <audio id="beep-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
 
   <script>
-    // Block context menu to prevent copy/paste
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
     
-    // Block keyboard shortcuts for copy/paste
     document.addEventListener('keydown', function(e) {
-      // Block Ctrl+C, Ctrl+X, Ctrl+V
       if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
         e.preventDefault();
       }
-      // Block right click
       if (e.keyCode === 93) {
         e.preventDefault();
       }
@@ -761,21 +735,17 @@
       }
     }
 
-    // Initial setup - show predicting text for 8 seconds
     showPredictingText();
     signal.classList.add("inactive");
 
-    // Update clock immediately and then every second
     updateClock();
     setInterval(updateClock, 1000);
 
-    // After 8 seconds, start normal operation
     initialTimeout = setTimeout(() => {
       initialLoad = false;
-      update(); // Force immediate update after initial delay
+      update();
     }, 8000);
 
-    // Set up regular updates
     setInterval(update, 1000);
   </script>
 </body>
